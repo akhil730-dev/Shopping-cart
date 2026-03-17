@@ -21,7 +21,7 @@ await connectDB()
 
 
 //Alow Multiple Origins
-const allowedOrigins=["http://localhost:5173","https://shopping-cart-frontend-alpha.vercel.app"]
+const allowedOrigins=["http://localhost:5173",'https://shopping-cart-ten-nu-31.vercel.app']
 
 /// Middleware configuration 
 
