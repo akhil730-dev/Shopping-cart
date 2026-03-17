@@ -27,7 +27,7 @@ const Categories = () => {
             <img
               src={category.image}
               alt={category.text}
-              className="w-full h-36 object-cover rounded-lg"
+              className="w-full h-20 object-contain rounded-lg"
             />
 
 

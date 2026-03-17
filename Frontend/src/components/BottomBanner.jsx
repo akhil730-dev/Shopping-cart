@@ -7,7 +7,7 @@ const BottomBanner = () => {
         {/* Desktop */}
         <img src={bottomBanner} alt="bottom banner" className='w-full hidden md:block rounded-xl object-cover'/>
         {/* Mobile */}
-        <img src={bottomBanner} alt="bottom banner" className='w-full block md:hidden rounded-xl object-cover h-48'/>
+        <img src={bottomBanner} alt="bottom banner" className='w-full block md:hidden rounded-xl object-cover' />
     </div>
   )
 }
