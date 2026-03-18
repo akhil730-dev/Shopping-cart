@@ -41,7 +41,10 @@ export const Navbar = () => {
             <div className="hidden sm:flex items-center gap-20">
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/products'>All Product</NavLink>
-                <NavLink to='/'>Contact</NavLink>
+                <button className='block  px-4 py-2 bg-blue-800 text-white rounded  hover:bg-blue-300 text-center'>
+                    <NavLink to='/seller'>Seller</NavLink>
+                </button>
+                
 
 
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
@@ -94,7 +97,15 @@ export const Navbar = () => {
 
             </div>
 
+
+               <button className='block lg:hidden px-4 py-2   rounded  hover:bg-blue-600 text-center'>
+                        <NavLink to='/seller'>Seller</NavLink>
+                    </button>
+
+
+
             <div className='flex item-center gap-6 sm:hidden'>
+                
                 <div onClick={() => navigate('/cart')} className="relative cursor-pointer">
                     <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="#615fff" stroke-linecap="round" stroke-linejoin="round" />
@@ -112,15 +123,17 @@ export const Navbar = () => {
                     <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="#426287" />
                 </svg>
             </button>
-
+                
 
 
             {/* Mobile Menu */}
 
+
+
             <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
                 <NavLink to='/' onClick={() => setOpen(false)}>Home</NavLink>
                 <NavLink to='/products' onClick={() => setOpen(false)}>All Products</NavLink>
-
+                
                 {user &&
                     <NavLink to='/products' onClick={() => setOpen(false)}>My Orders</NavLink>
                 }
