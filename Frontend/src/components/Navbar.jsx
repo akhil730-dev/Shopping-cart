@@ -96,14 +96,13 @@ export const Navbar = () => {
 
 
             </div>
+                   
+                   <NavLink to='/seller' className=" sm:hidden text-bold font-medium text-gray-700">
 
+                   Seller
 
-               <button className='block lg:hidden px-4 py-2   rounded  hover:bg-blue-600 text-center'>
-                        <NavLink to='/seller'>Seller</NavLink>
-                    </button>
-
-
-
+                   </NavLink>
+                   
             <div className='flex item-center gap-6 sm:hidden'>
                 
                 <div onClick={() => navigate('/cart')} className="relative cursor-pointer">
@@ -134,6 +133,8 @@ export const Navbar = () => {
                 <NavLink to='/' onClick={() => setOpen(false)}>Home</NavLink>
                 <NavLink to='/products' onClick={() => setOpen(false)}>All Products</NavLink>
                 
+                
+
                 {user &&
                     <NavLink to='/products' onClick={() => setOpen(false)}>My Orders</NavLink>
                 }
