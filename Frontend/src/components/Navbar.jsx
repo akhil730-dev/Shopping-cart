@@ -31,7 +31,8 @@ export const Navbar = () => {
     },[searchQuery])
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white transition-all">
+        // In Navbar.jsx - line 34
+<nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white shadow-md transition-all">
 
             <NavLink to='/' onClick={() => setOpen(false)} >
                 <img src="/logo.png" className="h-12" alt="logo" />
@@ -41,15 +42,15 @@ export const Navbar = () => {
             <div className="hidden sm:flex items-center gap-20">
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/products'>All Product</NavLink>
-                <button className='block  px-4 py-2 bg-blue-800 text-white rounded  hover:bg-blue-300 text-center'>
-                    <NavLink to='/seller'>Seller</NavLink>
+                <button className='px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-all duration-200 hover:shadow-lg'>
+                    <NavLink to='/seller' className="text-white">Seller</NavLink>
                 </button>
                 
 
 
-                <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
+                <div className="hidden lg:flex items-center text-sm gap-3 border-2 border-gray-200 px-4 py-2 rounded-full bg-gray-50 hover:border-indigo-300 transition-colors">
 
-                    <input onChange={(e)=>setSearchQuery(e.target.value)} className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
+                    <input onChange={(e)=>setSearchQuery(e.target.value)}className="py-1.5 w-full bg-transparent outline-none placeholder-gray-400 text-gray-700"  type="text" placeholder="Search products" />
 
 
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +130,7 @@ export const Navbar = () => {
 
 
 
-            <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
+            <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-lg py-4 flex-col items-start gap-2 px-5 text-sm md:hidden transition-all duration-300 animate-slideDown`}>
                 <NavLink to='/' onClick={() => setOpen(false)}>Home</NavLink>
                 <NavLink to='/products' onClick={() => setOpen(false)}>All Products</NavLink>
                 
