@@ -45,8 +45,8 @@ export const productList = async(req,res)=>{
 export const productById = async(req,res)=>{
     try {
         const  {id} = req.body;
-        const Product = await Product.findById(id)
-        res.json({sucess:true,Product})
+        const product = await Product.findById(id)
+        res.json({sucess:true,product})
     } catch (error) {
          console.log(error.message);
         res.json({success:false,message:error.message})
@@ -73,6 +73,46 @@ export const changeBestSeller = async (req, res) => {
         const { id, bestSeller } = req.body
         await Product.findByIdAndUpdate(id, { bestSeller })
         res.json({ success: true, message: "Best Seller Updated!" })
+    } catch (error) {
+        console.log(error.message)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+// Delete Product : /api/product/delete
+export const deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.body
+        
+        // Find product to get image URLs
+        const product = await Product.findById(id)
+        
+        if (!product) {
+            return res.json({ success: false, message: "Product not found" })
+        }
+
+        // Delete images from cloudinary
+        if (product.image && product.image.length > 0) {
+            await Promise.all(
+                product.image.map(async (imageUrl) => {
+                    try {
+                        // Extract public_id from URL
+                        const urlArray = imageUrl.split('/')
+                        const imageName = urlArray[urlArray.length - 1]
+                        const public_id = imageName.split('.')[0]
+                        
+                        await cloudinary.uploader.destroy(public_id)
+                    } catch (error) {
+                        console.log("Error deleting image from cloudinary:", error)
+                    }
+                })
+            )
+        }
+
+        // Delete product from database
+        await Product.findByIdAndDelete(id)
+        
+        res.json({ success: true, message: "Product deleted successfully" })
     } catch (error) {
         console.log(error.message)
         res.json({ success: false, message: error.message })
